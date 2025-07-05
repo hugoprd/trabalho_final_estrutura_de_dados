@@ -44,32 +44,34 @@ public class OrdenacaoTopologica{
 		n = 0;
 	}
 
-	public Elo insere(int chave){
+	private Elo criaElo(int chave){
+		Elo q = new Elo(chave, 0, null, null);
+		n++;
+
 		if(prim == null){
-            prim = new Elo();
-            n++;
 
-            return prim;
-        }
+		}
+		else{
+			Elo pUlt = prim;
 
-        Elo p = prim;
-        while(p.prox != null){
-            if(p.chave == chave){
-                return p;
-            }
-			
-            p = p.prox;
-        }
+			while(pUlt.prox != null){
+				pUlt = pUlt.prox;
+			}
 
-        if(p.chave == chave){
-            return p;
-        }
+			pUlt.prox = q;
+		}
 
-        // Se não encontrou, cria um novo no final da lista
-        Elo novoElo = new Elo(chave);
-        p.prox = novoElo;
-        n++;
-        return novoElo;
+		return q;
+	}
+
+	private Elo buscaElo(int chave){
+		for(Elo p = prim; p != null; p = p.prox){
+			if(p.chave == chave){
+				return p;
+			}
+		}
+
+		return null;
 	}
 	
 	/* Método responsável pela leitura do arquivo de entrada. */
