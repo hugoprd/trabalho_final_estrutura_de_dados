@@ -53,7 +53,7 @@ public class OrdenacaoTopologica{
 		n++;
 
 		if(prim == null){
-
+			prim = q;
 		}
 		else{
 			Elo pUlt = prim;
@@ -80,8 +80,9 @@ public class OrdenacaoTopologica{
 	
 	/* Método responsável pela leitura do arquivo de entrada. */
 	public void realizaLeitura(String nomeEntrada){
+		
 		File arquivo = new File(nomeEntrada);
-
+		
 		try(Scanner scan = new Scanner(arquivo)){
 			while(scan.hasNextInt()){
 				int chaveAnt = scan.nextInt();
@@ -91,17 +92,17 @@ public class OrdenacaoTopologica{
 				}
 
 				int chaveSuc = scan.nextInt();
-
+				
 				Elo noAnt = buscaElo(chaveAnt);
 				if(noAnt == null){
 					noAnt = criaElo(chaveAnt);
 				}
-
+				
 				Elo noSuc = buscaElo(chaveSuc);
 				if(noSuc == null){
 					noSuc = criaElo(chaveSuc);
 				}
-
+	
 				EloSuc novoSuc = new EloSuc(noSuc, noAnt.listaSuc);
 				noAnt.listaSuc = novoSuc;
 
@@ -117,11 +118,36 @@ public class OrdenacaoTopologica{
 	/* Método para impressão do estado atual da estrutura de dados. */
 	private void debug(){
 		/* Preencher. */
+		
+		Elo p = prim;
+		EloSuc q = p.listaSuc;
+		
+		while(p != null)
+		{
+			System.out.printf(p.chave + " predecessores: " + p.contador + ", sucessores: ");
+			
+			while(q != null)
+			{
+				System.out.print(q.id.chave + " -> ");
+					
+				q = q.prox;
+			}
+			
+			System.out.print(" NULL");
+			
+			System.out.println();
+			
+			p = p.prox;
+		}
 	}
 	
 	/* Método responsável por executar o algoritmo. */
 	public boolean executa(){
 		/* Preencher. */
+		
+		realizaLeitura("entrada.txt");
+		
+		debug();
 		
 		return false;
 	}
