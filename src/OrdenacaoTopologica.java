@@ -119,6 +119,7 @@ public class OrdenacaoTopologica{
 	private void debug(){
 		Elo p = prim;
 		
+		System.out.println("Debug");
 		while(p != null)
 		{
 			System.out.printf(p.chave + " predecessores: " + p.contador + ", sucessores: ");
@@ -142,11 +143,73 @@ public class OrdenacaoTopologica{
 	
 	/* Método responsável por executar o algoritmo. */
 	public boolean executa(){
-		String entradaArquivo = "src\\entrada.txt";
-		realizaLeitura(entradaArquivo);
-		
-		debug();
-		
-		return false;
+        debug();
+
+        System.out.println("\nOrdenacao topologica:");
+        
+        Elo fila = null;
+        Elo p = this.prim;
+        
+        while(p != null){
+            Elo proximoOriginal = p.prox;
+            if(p.contador == 0){
+                p.prox = fila;
+                fila = p;
+            }
+
+            p = proximoOriginal;
+        }
+
+        Elo fimDaFila = fila;
+        if(fimDaFila != null){
+            while(fimDaFila.prox != null){
+                fimDaFila = fimDaFila.prox;
+            }
+        }
+        
+        int elementosProcessados = 0;
+        
+        while(fila != null){
+            Elo q = fila;
+            fila = fila.prox;
+
+            if(fila == null){
+                fimDaFila = null;
+            }
+
+            System.out.print(q.chave + " ");
+            elementosProcessados++;
+
+            for (EloSuc t = q.listaSuc; t != null; t = t.prox) {
+                Elo sucessor = t.id;
+                sucessor.contador--;
+
+                if(sucessor.contador == 0){
+                    sucessor.prox = null;
+                    
+                    if(fila == null){
+                        fila = sucessor;
+                        fimDaFila = sucessor;
+                    }
+					else{
+                        fimDaFila.prox = sucessor;
+                        fimDaFila = sucessor;
+                    }
+                }
+            }
+        }
+
+        System.out.println();
+
+        if(elementosProcessados == n){
+            System.out.println("Conjunto é parcialmente ordenado.");
+
+            return true;
+        }
+		else{
+            System.out.println("Erro: O grafo possui um ciclo.");
+
+            return false;
+        }
 	}
 }
