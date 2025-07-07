@@ -117,14 +117,13 @@ public class OrdenacaoTopologica{
 	
 	/* Método para impressão do estado atual da estrutura de dados. */
 	private void debug(){
-		/* Preencher. */
-		
 		Elo p = prim;
-		EloSuc q = p.listaSuc;
 		
 		while(p != null)
 		{
 			System.out.printf(p.chave + " predecessores: " + p.contador + ", sucessores: ");
+
+			EloSuc q = p.listaSuc;
 			
 			while(q != null)
 			{
@@ -143,9 +142,8 @@ public class OrdenacaoTopologica{
 	
 	/* Método responsável por executar o algoritmo. */
 	public boolean executa(){
-		/* Preencher. */
-		
-		realizaLeitura("entrada.txt");
+		String entradaArquivo = "src\\entrada.txt";
+		realizaLeitura(entradaArquivo);
 		
 		debug();
 		
