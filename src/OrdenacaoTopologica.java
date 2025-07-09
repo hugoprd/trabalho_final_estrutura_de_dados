@@ -1,5 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
 import java.util.Scanner;
 
 public class OrdenacaoTopologica{
@@ -212,4 +216,53 @@ public class OrdenacaoTopologica{
             return false;
         }
 	}
+
+	public static void geraGrafoAciclico(String nomeArquivo, int numVertices, int numArestas) throws IOException {
+        Random random = new Random();
+
+        int[] vertices = new int[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            vertices[i] = i;
+        }
+
+        for(int i = numVertices - 1; i > 0; i--){
+            int j = random.nextInt(i + 1);
+            
+            int temp = vertices[i];
+            vertices[i] = vertices[j];
+            vertices[j] = temp;
+        }
+
+        if(numVertices > 50000){
+            System.err.println("Aviso: Número de vértices muito grande. Possibilidade de causar OutOfMemoryError.");
+        }
+        
+        boolean[][] arestasCriadas = new boolean[numVertices][numVertices];
+        int arestasContadas = 0;
+
+        try(PrintWriter out = new PrintWriter(new FileWriter(nomeArquivo))){
+            long maxTentativas = (long) numArestas * 10;
+            long tentativas = 0;
+            
+            while(arestasContadas < numArestas && tentativas < maxTentativas){
+                int i = random.nextInt(numVertices);
+                int j = random.nextInt(numVertices);
+                
+                tentativas++;
+                if (i == j) continue;
+
+                int indiceDe = Math.min(i, j);
+                int indicePara = Math.max(i, j);
+
+                int de = vertices[indiceDe];
+                int para = vertices[indicePara];
+
+                if(!arestasCriadas[de][para]){
+                    out.println(de + " < " + para);
+                    arestasCriadas[de][para] = true;
+                    arestasContadas++;
+                }
+            }
+        }
+    }
 }

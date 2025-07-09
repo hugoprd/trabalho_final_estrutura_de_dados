@@ -1,13 +1,15 @@
 import java.io.IOException;
 import java.util.*;
+
 public class geradorDAG{
     public static void gerarDAG(int numVertices, int numArestas, String nomeArq){
         //verificando a quantidade de arestas para nao ter ciclos
         if (numArestas > numVertices * (numVertices - 1) / 2){
             throw new IllegalArgumentException("Numero de arestas excede o maximo aceitavel");
         }
+
         //criando uma lista com os vertices
-        List<Integer> vertices = new ArrayList<>();
+        ArrayList<Integer> vertices = new ArrayList<>();
         for (int i = 0; i < numVertices; i++){
             vertices.add(i);
         }
@@ -29,5 +31,5 @@ public class geradorDAG{
             String aresta = de + " < " + para;
             arestas.add(aresta);
         }
-
-    }}
+    }
+}
