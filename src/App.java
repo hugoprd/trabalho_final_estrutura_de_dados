@@ -4,15 +4,17 @@ public class App{
     	OrdenacaoTopologica oT = new OrdenacaoTopologica();
         String entradaArquivo = "src\\entrada.txt";
 
-        oT.realizaLeitura(entradaArquivo);
+        //oT.realizaLeitura(entradaArquivo);
     	
-    	oT.executa();
+    	//oT.executa();
 
-        System.out.println("--- INICIANDO EXPERIMENTO COMPUTACIONAL DE ORDENAÇÃO TOPOLÓGICA ---");
+        System.out.println("--- INICIANDO ORDENAÇÃO TOPOLÓGICA ---");
 
         int[] tamanhosVertices = {10, 20, 30, 40, 50, 100, 200, 500, 1000, 5000, 10000, 20000, 30000, 50000, 100000};
         String nomeArquivo = "grafo_tmp.txt";
         int numRodadas = 10;
+        long[] tempos = new long[tamanhosVertices.length];
+        int k = 0;
 
         for(int V : tamanhosVertices){
             int E = V * 4;
@@ -23,27 +25,31 @@ public class App{
             OrdenacaoTopologica.geraGrafoAciclico(nomeArquivo, V, E);
             System.out.println("Grafo artificial gerado em '" + nomeArquivo + "'.");
 
-            long tempoTotalNano = 0;
+            long tempoTotal = 0;
 
             System.out.print("Executando rodadas: ");
-            for (int i = 0; i < numRodadas; i++) {
+            for(int i = 0; i < numRodadas; i++){
                 OrdenacaoTopologica ot = new OrdenacaoTopologica();
                 
-                long inicio = System.nanoTime();
+                long inicio = System.currentTimeMillis();
                 
                 ot.realizaLeitura(nomeArquivo);
                 ot.executa();
                 
-                long fim = System.nanoTime();
-                tempoTotalNano += (fim - inicio);
+                long fim = System.currentTimeMillis();
+                tempoTotal += (fim - inicio);
                 System.out.print((i + 1) + "... ");
             }
+
             System.out.println("Concluído.");
 
-            long tempoMedioNano = tempoTotalNano / numRodadas;
-            double tempoMedioMilli = tempoMedioNano / 1_000_000.0;
+            long tempoMedio = tempoTotal / numRodadas;
 
-            System.out.printf(">> RESULTADO FINAL PARA V=%d: Tempo médio = %.4f ms%n", V, tempoMedioMilli);
+            tempos[k] = tempoMedio;
+
+            System.out.printf("RESULTADO FINAL PARA V = %d: Tempo médio = %.4f ms%n", V, tempoMedio);
+
+            k++;
         }
     }
 }
