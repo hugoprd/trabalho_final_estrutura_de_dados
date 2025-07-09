@@ -254,12 +254,12 @@ public class OrdenacaoTopologica{
                 int indiceDe = Math.min(i, j);
                 int indicePara = Math.max(i, j);
 
-                int de = vertices[indiceDe];
-                int para = vertices[indicePara];
+                int A = vertices[indiceDe];
+                int B = vertices[indicePara];
 
-                if(!arestasCriadas[de][para]){
-                    out.println(de + " < " + para);
-                    arestasCriadas[de][para] = true;
+                if(!arestasCriadas[A][B]){
+                    out.println(A + " < " + B);
+                    arestasCriadas[A][B] = true;
                     arestasContadas++;
                 }
             }
