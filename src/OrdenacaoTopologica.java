@@ -217,7 +217,7 @@ public class OrdenacaoTopologica{
         }
 	}
 
-	public static void geraGrafoAciclico(String nomeArquivo, int numVertices, int numArestas) throws IOException {
+	public static void geraGrafoAciclico(String nomeArquivo, int numVertices, int numArestas) throws IOException{
         Random random = new Random();
 
         int[] vertices = new int[numVertices];
