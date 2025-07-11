@@ -34,7 +34,8 @@ public class App{
             System.out.print("Executando rodadas: ");
             for(int i = 0; i < numRodadas; i++){                
                 //ot.realizaLeitura(nomeArquivo);
-                ot.executa();
+                //ot.executa();
+                OrdenacaoTopologica.geraGrafoAciclico(nomeArquivo, V, E);
                 
                 System.out.print((i + 1) + "... ");
             }
@@ -48,7 +49,7 @@ public class App{
 
             tempos[k] = tempoMedio;
 
-            System.out.printf("RESULTADO FINAL PARA V = %d: Tempo médio = %.4f ms%n", V, tempoMedio);
+            System.out.println("RESULTADO FINAL PARA V = " + V + ": Tempo médio = " + tempoMedio + "ms");
 
             k++;
         }
