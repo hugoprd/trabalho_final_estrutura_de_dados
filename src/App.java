@@ -1,7 +1,7 @@
 public class App{
     public static void main(String[] args) throws Exception{
         // CÓDIGO FEITO COM BASE NO ENUNCIADO DA DOCUMENTAÇÃO DADA PELO PROFESSOR PEDRO MOURA    	
-    	OrdenacaoTopologica oT = new OrdenacaoTopologica();
+    	//OrdenacaoTopologica oT = new OrdenacaoTopologica();
         String entradaArquivo = "src\\entrada.txt";
 
         //oT.realizaLeitura(entradaArquivo);
@@ -17,6 +17,8 @@ public class App{
         int k = 0;
 
         for(int V : tamanhosVertices){
+            OrdenacaoTopologica ot = new OrdenacaoTopologica();
+
             int E = V * 4;
 
             System.out.println("\n---------------------------------------------------------");
@@ -27,19 +29,18 @@ public class App{
 
             long tempoTotal = 0;
 
+            long inicio = System.currentTimeMillis();
+
             System.out.print("Executando rodadas: ");
-            for(int i = 0; i < numRodadas; i++){
-                OrdenacaoTopologica ot = new OrdenacaoTopologica();
-                
-                long inicio = System.currentTimeMillis();
-                
-                ot.realizaLeitura(nomeArquivo);
+            for(int i = 0; i < numRodadas; i++){                
+                //ot.realizaLeitura(nomeArquivo);
                 ot.executa();
                 
-                long fim = System.currentTimeMillis();
-                tempoTotal += (fim - inicio);
                 System.out.print((i + 1) + "... ");
             }
+
+            long fim = System.currentTimeMillis();
+            tempoTotal += (fim - inicio);
 
             System.out.println("Concluído.");
 
