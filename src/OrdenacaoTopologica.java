@@ -272,7 +272,7 @@ public class OrdenacaoTopologica{
                 int A = vertices[indiceDe];
                 int B = vertices[indicePara];
 
-                if(!arestasCriadas[A][B]){
+                if(arestasCriadas == null || !arestasCriadas[A][B]){
                     out.println(A + " < " + B);
                     arestasCriadas[A][B] = true;
                     arestasContadas++;
