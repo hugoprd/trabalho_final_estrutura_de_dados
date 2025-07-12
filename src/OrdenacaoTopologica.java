@@ -250,7 +250,7 @@ public class OrdenacaoTopologica{
             }
         }
 		else{
-            System.err.println("AVISO: V=" + numVertices + " é muito grande. Não será feita a verificação de arestas duplicadas.");
+            System.err.println("AVISO: V = " + numVertices + " é muito grande. Não será feita a verificação de arestas duplicadas.");
         }
 
 		int arestasContadas = 0;
@@ -274,8 +274,13 @@ public class OrdenacaoTopologica{
 
                 if(arestasCriadas == null || !arestasCriadas[A][B]){
                     out.println(A + " < " + B);
-                    arestasCriadas[A][B] = true;
+                    
+                    if(arestasCriadas != null){
+                        arestasCriadas[A][B] = true;
+                    }
+                    
                     arestasContadas++;
+
                 }
             }
         }
