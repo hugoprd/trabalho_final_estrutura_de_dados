@@ -55,7 +55,12 @@ public class App{
 
         System.out.println("\nTempos médio de todos os tamanhos de vértices:");
         for(int l = 0; l < tempos.length; l++){
-            System.out.print(tempos[l] + "ms, ");
+            if(l == tempos.length-1){
+                System.out.print(tempos[l] + "ms.");
+            }
+            else{
+                System.out.print(tempos[l] + "ms, ");
+            }
         }
     }
 }
