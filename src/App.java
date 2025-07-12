@@ -14,6 +14,7 @@ public class App{
         String nomeArquivo = "grafo_tmp.txt";
         int numRodadas = 10;
         long[] tempos = new long[tamanhosVertices.length];
+        long somaDosTempos = 0;
         int k = 0;
 
         for(int V : tamanhosVertices){
@@ -47,6 +48,7 @@ public class App{
             long tempoMedio = tempoTotal / numRodadas;
 
             tempos[k] = tempoMedio;
+            somaDosTempos += tempoMedio;
 
             System.out.println("RESULTADO FINAL PARA V = " + V + ": Tempo médio = " + tempoMedio + "ms");
 
@@ -61,6 +63,8 @@ public class App{
             else{
                 System.out.print(tamanhosVertices[l] + ": " + tempos[l] + "ms, ");
             }
+
+            System.out.println("\nO tempo total de execução do experimento foi de " + somaDosTempos + "ms.");
         }
     }
 }
