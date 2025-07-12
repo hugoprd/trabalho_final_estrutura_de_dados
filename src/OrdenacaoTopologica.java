@@ -84,7 +84,6 @@ public class OrdenacaoTopologica{
 	
 	/* Método responsável pela leitura do arquivo de entrada. */
 	public void realizaLeitura(String nomeEntrada){
-		
 		File arquivo = new File(nomeEntrada);
 		
 		try(Scanner scan = new Scanner(arquivo)){
@@ -181,7 +180,7 @@ public class OrdenacaoTopologica{
                 fimDaFila = null;
             }
 
-            System.out.print(q.chave + " ");
+            //System.out.print(q.chave + " "); <- para mostrar todos numeros
             elementosProcessados++;
 
             for (EloSuc t = q.listaSuc; t != null; t = t.prox) {

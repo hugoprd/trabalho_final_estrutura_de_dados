@@ -2,12 +2,12 @@ public class App{
     public static void main(String[] args) throws Exception{
         // CÓDIGO FEITO COM BASE NO ENUNCIADO DA DOCUMENTAÇÃO DADA PELO PROFESSOR PEDRO MOURA    	
     	//OrdenacaoTopologica oT = new OrdenacaoTopologica();
-        String entradaArquivo = "src\\entrada.txt";
+        //String entradaArquivo = "src\\entrada.txt";
 
         //oT.realizaLeitura(entradaArquivo);
     	
     	//oT.executa();
-
+        
         System.out.println("--- INICIANDO ORDENAÇÃO TOPOLÓGICA ---");
 
         int[] tamanhosVertices = {10, 20, 30, 40, 50, 100, 200, 500, 1000, 5000, 10000, 20000, 30000, 50000, 100000};
@@ -33,9 +33,8 @@ public class App{
 
             System.out.print("Executando rodadas: ");
             for(int i = 0; i < numRodadas; i++){                
-                //ot.realizaLeitura(nomeArquivo);
-                //ot.executa();
-                OrdenacaoTopologica.geraGrafoAciclico(nomeArquivo, V, E);
+                ot.realizaLeitura(nomeArquivo);
+                ot.executa();
                 
                 System.out.print((i + 1) + "... ");
             }
@@ -52,6 +51,11 @@ public class App{
             System.out.println("RESULTADO FINAL PARA V = " + V + ": Tempo médio = " + tempoMedio + "ms");
 
             k++;
+        }
+
+        System.out.println("Tempos médio de todos os tamanhos de vértices:");
+        for(int l = 0; l < tempos.length; l++){
+            System.out.print(tempos[l] + ", ");
         }
     }
 }
