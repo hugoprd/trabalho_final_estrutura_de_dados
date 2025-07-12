@@ -17,8 +17,6 @@ public class App{
         int k = 0;
 
         for(int V : tamanhosVertices){
-            OrdenacaoTopologica ot = new OrdenacaoTopologica();
-
             int E = V * 4;
 
             System.out.println("\n---------------------------------------------------------");
@@ -32,7 +30,9 @@ public class App{
             long inicio = System.currentTimeMillis();
 
             System.out.print("Executando rodadas: ");
-            for(int i = 0; i < numRodadas; i++){                
+            for(int i = 0; i < numRodadas; i++){    
+                OrdenacaoTopologica ot = new OrdenacaoTopologica();
+                            
                 ot.realizaLeitura(nomeArquivo);
                 ot.executa();
                 
