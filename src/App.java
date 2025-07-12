@@ -3,9 +3,9 @@ public class App{
         // CÓDIGO FEITO COM BASE NO ENUNCIADO DA DOCUMENTAÇÃO DADA PELO PROFESSOR PEDRO MOURA    	
     	//OrdenacaoTopologica oT = new OrdenacaoTopologica();
         //String entradaArquivo = "src\\entrada.txt";
-
+        //
         //oT.realizaLeitura(entradaArquivo);
-    	
+    	//
     	//oT.executa();
         
         System.out.println("--- INICIANDO ORDENAÇÃO TOPOLÓGICA ---");
@@ -32,7 +32,7 @@ public class App{
             System.out.print("Executando rodadas: ");
             for(int i = 0; i < numRodadas; i++){    
                 OrdenacaoTopologica ot = new OrdenacaoTopologica();
-                            
+
                 ot.realizaLeitura(nomeArquivo);
                 ot.executa();
                 

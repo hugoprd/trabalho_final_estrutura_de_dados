@@ -180,7 +180,7 @@ public class OrdenacaoTopologica{
                 fimDaFila = null;
             }
 
-            //System.out.print(q.chave + " "); <- para mostrar todos numeros
+            System.out.print(q.chave + " "); // <- para mostrar todos numeros
             elementosProcessados++;
 
             for (EloSuc t = q.listaSuc; t != null; t = t.prox) {
@@ -236,8 +236,24 @@ public class OrdenacaoTopologica{
         //     System.err.println("Aviso: Número de vértices muito grande. Possibilidade de causar OutOfMemoryError.");
         // }
         
-        boolean[][] arestasCriadas = new boolean[numVertices][numVertices];
-        int arestasContadas = 0;
+        //boolean[][] arestasCriadas = new boolean[numVertices][numVertices];
+
+		boolean[][] arestasCriadas = null;
+
+		if(numVertices <= 40000){
+            try{
+                arestasCriadas = new boolean[numVertices][numVertices];
+            }
+			catch(OutOfMemoryError e){
+                System.err.println("AVISO: Memória insuficiente para matriz de V = " + numVertices);
+                arestasCriadas = null;
+            }
+        }
+		else{
+            System.err.println("AVISO: V=" + numVertices + " é muito grande. Não será feita a verificação de arestas duplicadas.");
+        }
+
+		int arestasContadas = 0;
 
         try(PrintWriter out = new PrintWriter(new FileWriter(nomeArquivo))){
             long maxTentativas = (long) numArestas * 10;
