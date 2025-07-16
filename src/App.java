@@ -1,13 +1,6 @@
 public class App{
     public static void main(String[] args) throws Exception{
-        // CÓDIGO FEITO COM BASE NO ENUNCIADO DA DOCUMENTAÇÃO DADA PELO PROFESSOR PEDRO MOURA    	
-    	//OrdenacaoTopologica oT = new OrdenacaoTopologica();
-        //String entradaArquivo = "src\\entrada.txt";
-        //
-        //oT.realizaLeitura(entradaArquivo);
-    	//
-    	//oT.executa();
-        
+        // CÓDIGO FEITO COM BASE NO ENUNCIADO DA DOCUMENTAÇÃO DADA PELO PROFESSOR PEDRO MOURA        
         System.out.println("--- INICIANDO ORDENAÇÃO TOPOLÓGICA ---");
 
         int[] tamanhosVertices = {10, 20, 30, 40, 50, 100, 200, 500, 1000, 5000, 10000, 20000, 30000, 50000, 100000};
@@ -63,8 +56,8 @@ public class App{
             else{
                 System.out.print(tamanhosVertices[l] + ": " + tempos[l] + "ms, ");
             }
-
-            System.out.println("\nO tempo total de execução do experimento foi de " + somaDosTempos + "ms.");
         }
+
+        System.out.println("\nO tempo total de execução do experimento foi de " + somaDosTempos + "ms.");
     }
 }
