@@ -232,12 +232,6 @@ public class OrdenacaoTopologica{
             vertices[j] = temp;
         }
 
-        // if(numVertices > 50000){
-        //     System.err.println("Aviso: Número de vértices muito grande. Possibilidade de causar OutOfMemoryError.");
-        // }
-        
-        //boolean[][] arestasCriadas = new boolean[numVertices][numVertices];
-
 		boolean[][] arestasCriadas = null;
 
 		if(numVertices <= 40000){
@@ -280,7 +274,6 @@ public class OrdenacaoTopologica{
                     }
                     
                     arestasContadas++;
-
                 }
             }
         }

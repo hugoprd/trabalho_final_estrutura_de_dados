@@ -5,7 +5,7 @@ public class App{
 
         int[] tamanhosVertices = {10, 20, 30, 40, 50, 100, 200, 500, 1000, 5000, 10000, 20000, 30000, 50000, 100000};
         String nomeArquivo = "grafo_tmp.txt";
-        int numRodadas = 10;
+        int numRodadas = 100;
         long[] tempos = new long[tamanhosVertices.length];
         long somaDosTempos = 0;
         int k = 0;
